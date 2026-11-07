@@ -53,8 +53,16 @@ export default function Work() {
           </>
         ) : (
           <Reveal className="work-empty" delay={0.05}>
-            <p>New work is on the way.</p>
-            <a className="process-cta" href="#contact">Have a project in mind? Get in touch <span aria-hidden="true">↗</span></a>
+            <img className="work-logo" src="/kr-brothers-logo.png" alt="KR Brothers Construction emblem" />
+            <div className="work-copy">
+              <span className="work-status">Live website</span>
+              <p className="work-title">KR Brothers</p>
+              <p className="muted">Crane rental, industrial lifting, aur material-handling services ke liye business website.</p>
+              <p className="work-tech">React · JavaScript · CSS</p>
+            </div>
+            <a className="process-cta" href="https://www.krbrothers.in/" target="_blank" rel="noreferrer">
+              Visit live website <span aria-hidden="true">↗</span>
+            </a>
           </Reveal>
         )}
       </div>

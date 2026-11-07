@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 /* Matches a media query and stays in sync. */
 export function useMediaQuery(query) {
@@ -18,6 +19,19 @@ export function useMediaQuery(query) {
 export const useReducedMotion = () => useMediaQuery("(prefers-reduced-motion: reduce)");
 export const useIsMobile = () => useMediaQuery("(max-width: 768px)");
 export const useIsTouch = () => useMediaQuery("(hover: none), (pointer: coarse)");
+
+export function useSectionNavigation() {
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+  return useCallback((selector) => (event) => {
+    event.preventDefault();
+    if (pathname !== "/") {
+      navigate("/", { state: { scrollTo: selector } });
+      return;
+    }
+    document.querySelector(selector)?.scrollIntoView({ behavior: "smooth" });
+  }, [navigate, pathname]);
+}
 
 /* Dark / light with localStorage + system default. */
 export function useTheme() {

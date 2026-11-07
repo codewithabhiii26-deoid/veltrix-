@@ -21,8 +21,8 @@ npm run preview  # preview the build
 | Page title, description, social metadata, structured data | `index.html` |
 | Colours, type, radii | `:root` in `src/styles/global.css` |
 
-The projects section intentionally stays empty until real work is ready to publish. Add verified
-project details, destinations, and screenshots in `src/data/projects.js` when available.
+Add or replace project entries in `src/data/projects.js` whenever you want to update the portfolio
+showcase. Keep each case study realistic and verified, and add screenshots or live links when available.
 
 ## Contact form
 

@@ -1,5 +1,6 @@
 import { ArrowUpRight, Check, MessageCircle, Rocket } from "lucide-react";
 import Reveal from "../components/Reveal";
+import { useSectionNavigation } from "../hooks";
 
 const steps = [
   {
@@ -23,6 +24,7 @@ const steps = [
 ];
 
 export default function About() {
+  const jump = useSectionNavigation();
   return (
     <section id="process">
       <div className="shell">
@@ -49,7 +51,7 @@ export default function About() {
           ))}
         </div>
         <Reveal delay={0.15}>
-          <a className="process-cta" href="#contact">
+          <a className="process-cta" href="#contact" onClick={jump("#contact")}>
             Share your idea <ArrowUpRight size={17} />
           </a>
         </Reveal>

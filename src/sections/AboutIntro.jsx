@@ -1,10 +1,12 @@
 import { ArrowUpRight, MapPin } from "lucide-react";
 import { siteConfig } from "../config/site";
 import Reveal from "../components/Reveal";
+import { useSectionNavigation } from "../hooks";
 
 const technologies = ["React", "JavaScript", "Node.js", "Express", "MongoDB"];
 
 export default function AboutIntro() {
+  const jump = useSectionNavigation();
   return (
     <section id="about">
       <div className="shell about-intro">
@@ -33,7 +35,7 @@ export default function AboutIntro() {
           <div className="about-stack" aria-label="Technologies">
             {technologies.map((technology) => <span className="chip" key={technology}>{technology}</span>)}
           </div>
-          <a className="about-contact" href="#contact">Let’s talk <ArrowUpRight size={17} /></a>
+          <a className="about-contact" href="#contact" onClick={jump("#contact")}>Let’s talk <ArrowUpRight size={17} /></a>
         </Reveal>
       </div>
     </section>

@@ -27,6 +27,7 @@ export const siteConfig = {
 };
 
 export const navLinks = [
+  { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
   { label: "Projects", href: "#work" },
@@ -45,6 +46,10 @@ export const skillGroups = [
 export const techWall = [
   "React", "JavaScript", "HTML", "CSS", "Node.js", "Express",
   "MongoDB", "Git", "GitHub", "Bootstrap", "Tailwind", "Three.js",
+];
+
+export const featuredTech = [
+  "React", "JavaScript", "Node.js", "Express", "MongoDB", "Tailwind CSS", "GitHub",
 ];
 
 export const services = [

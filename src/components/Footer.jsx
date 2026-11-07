@@ -1,22 +1,10 @@
-import { useLocation, useNavigate } from "react-router-dom";
 import { ArrowUpRight, Mail, Phone } from "lucide-react";
 import { siteConfig } from "../config/site";
+import { useSectionNavigation } from "../hooks";
 import Brand from "./Brand";
 
 export default function Footer() {
-  const { pathname } = useLocation();
-  const navigate = useNavigate();
-  const scrollTo = (id) => (event) => {
-    event.preventDefault();
-    if (pathname !== "/") {
-      navigate("/");
-      window.setTimeout(() => {
-        document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
-      }, 500);
-      return;
-    }
-    document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
-  };
+  const scrollTo = useSectionNavigation();
 
   return (
     <footer className="footer">

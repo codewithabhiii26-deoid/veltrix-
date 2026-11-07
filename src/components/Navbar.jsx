@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { navLinks, siteConfig } from "../config/site";
-import { useActiveSection } from "../hooks";
+import { useActiveSection, useSectionNavigation } from "../hooks";
 import Brand from "./Brand";
 
 const IDS = navLinks.map((l) => l.href.replace("#", ""));
@@ -13,7 +13,7 @@ export default function Navbar() {
   const [menu, setMenu] = useState(false);
   const active = useActiveSection(IDS);
   const { pathname } = useLocation();
-  const navigate = useNavigate();
+  const navigateToSection = useSectionNavigation();
   const onHome = pathname === "/";
 
   useEffect(() => {
@@ -28,6 +28,11 @@ export default function Navbar() {
     return () => document.body.classList.remove("is-locked");
   }, [menu]);
 
+  const jump = (href) => (e) => {
+    setMenu(false);
+    navigateToSection(href)(e);
+  };
+
   useEffect(() => {
     if (!menu) return undefined;
     const closeOnEscape = (event) => {
@@ -37,25 +42,11 @@ export default function Navbar() {
     return () => removeEventListener("keydown", closeOnEscape);
   }, [menu]);
 
-  const jump = (href) => (e) => {
-    setMenu(false);
-    e.preventDefault();
-    if (!onHome) {
-      navigate("/");
-      window.setTimeout(() => {
-        document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
-      }, 500);
-      return;
-    }
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
-    history.replaceState(null, "", location.pathname + location.search);
-  };
-
   return (
     <>
       <header className={`nav${stuck ? " stuck" : ""}`}>
         <div className="shell nav-inner">
-          <Link to="/" className="logo" aria-label="CodeWithAbhiii — home">
+          <Link to="/" className="logo" aria-label="VELTRIX — home">
             <Brand />
           </Link>
 
