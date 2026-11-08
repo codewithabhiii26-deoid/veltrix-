@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://codewithabhiii.vercel.app/sitemap.xml
+Sitemap: https://veltrix.thakur1.workers.dev/sitemap.xml
